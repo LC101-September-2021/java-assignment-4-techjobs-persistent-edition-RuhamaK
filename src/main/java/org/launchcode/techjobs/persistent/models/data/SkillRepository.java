@@ -10,5 +10,4 @@ import java.util.List;
 
 @Repository
 public interface SkillRepository extends CrudRepository<Skill, Integer> {
-    List<Employer> findByName(String name);
 }

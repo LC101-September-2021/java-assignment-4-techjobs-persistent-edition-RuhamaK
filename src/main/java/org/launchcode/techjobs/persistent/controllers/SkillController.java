@@ -55,7 +55,6 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-//            model.addAttribute("title", "Invalid Skill ID: " + skillId);
             return "redirect:../";
         }
     }

@@ -8,5 +8,4 @@ import java.util.List;
 
 @Repository
 public interface EmployerRepository extends CrudRepository<Employer, Integer> {
-    List<Employer> findByName (String name);
 }
