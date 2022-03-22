@@ -19,11 +19,10 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
-    @GetMapping("index")
-    public String indexOfAllSkills(Model model){
+    @GetMapping("")
+    public String index(Model model){
         model.addAttribute("title", "All Skills");
         model.addAttribute("skills", skillRepository.findAll());
-
         return "skills/index";
     }
 
@@ -40,6 +39,7 @@ public class SkillController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Skill");
+            model.addAttribute("skills", skillRepository.findAll());
             return "skills/add";
         }
         skillRepository.save(newSkill);
@@ -55,7 +55,7 @@ public class SkillController {
             model.addAttribute("skill", skill);
             return "skills/view";
         } else {
-            model.addAttribute("title", "Invalid Skill ID: " + skillId);
+//            model.addAttribute("title", "Invalid Skill ID: " + skillId);
             return "redirect:../";
         }
     }

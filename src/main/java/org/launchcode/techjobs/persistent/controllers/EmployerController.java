@@ -15,14 +15,13 @@ import java.util.Optional;
 @RequestMapping("employers")
 public class EmployerController {
 
-    @Autowired
-    private EmployerRepository employerRepository;
+ @Autowired
+ private EmployerRepository employerRepository;
 
-    @GetMapping("index")
-    public String indexOfAllEmployers(Model model){
+    @GetMapping("")
+    public String index(Model model){
         model.addAttribute("title", "All Employers");
         model.addAttribute("employers", employerRepository.findAll());
-
         return "employers/index";
     }
 
@@ -39,6 +38,7 @@ public class EmployerController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Employer");
+            model.addAttribute("employers", employerRepository.findAll());
             return "employers/add";
         }
         employerRepository.save(newEmployer);
@@ -54,7 +54,7 @@ public class EmployerController {
             model.addAttribute("employer", employer);
             return "employers/view";
         } else {
-            model.addAttribute("title", "Invalid Employer ID: " + employerId);
+//            model.addAttribute("title", "Invalid Employer ID: " + employerId);
             return "redirect:../";
         }
     }
